@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TodoInsert from './components/TodoInsert/TodoInsert';
+import TodoList from './components/TodoList/TodoList';
+import {
+  Title,
+  TitleContainer,
+  TodoContainer,
+  TodoWrapper,
+} from './TodoTemplate/TodoTemplateStyle';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TodoWrapper>
+        <TodoContainer>
+          <TitleContainer>
+            <Title>Todo App</Title>
+          </TitleContainer>
+          <TodoInsert />
+          <TodoList />
+        </TodoContainer>
+      </TodoWrapper>
     </div>
   );
 }
-
 export default App;
