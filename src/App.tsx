@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoInsert from './components/TodoInsert/TodoInsert';
 import TodoList from './components/TodoList/TodoList';
+import GlobalStyle from './TodoTemplate/GlobalStyle';
 import {
   Title,
   TitleContainer,
@@ -12,6 +13,7 @@ import {
 function App() {
   return (
     <div>
+      <GlobalStyle />
       <TodoWrapper>
         <TodoContainer>
           <TitleContainer>

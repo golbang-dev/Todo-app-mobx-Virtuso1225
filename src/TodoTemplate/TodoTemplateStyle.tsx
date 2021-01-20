@@ -20,6 +20,7 @@ export const TitleContainer = styled.div`
 export const Title = styled.h1`
   color: white;
   font-size: 30px;
+  font-family: CascadiaCode;
 `;
 export const TodoContainer = styled.div`
   display: flex;

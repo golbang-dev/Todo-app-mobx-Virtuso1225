@@ -11,6 +11,7 @@ export const AddBox = styled.div`
 
 export const AddInput = styled.input`
   color: white;
+  font-family: CascadiaCode;
   display: flex;
   border-radius: 4px 0 0 4px;
   border: 2px solid #5d0cff;
@@ -24,6 +25,7 @@ export const AddInput = styled.input`
   &:focus {
     outline: none;
     &::placeholder {
+      font-family: CascadiaCode;
       color: #161a2b;
     }
   }
@@ -41,6 +43,7 @@ export const Button = styled.button`
   );
   white-space: nowrap;
   padding: 12px 30px;
+  font-family: CascadiaCode;
   color: white;
   font-size: 15px;
   outline: none;

@@ -5,6 +5,7 @@ interface checked {
 }
 export const ItemContainer = styled.div`
   color: #fff;
+  font-family: CascadiaCode;
   background: linear-gradient(
     90deg,
     rgba(255, 118, 20, 1) 0%,
