@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import CascadiaCode from '../fonts/CascadiaCode.ttf';
+import CascadiaCode from '../../fonts/CascadiaCode.ttf';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {

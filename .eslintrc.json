@@ -39,6 +39,8 @@
         "prettier"
     ],
     "rules": {
+        "arrow-body-style": "off",
+        "no-console":"off",
         "react/jsx-filename-extension": "off",
         "react/jsx-one-expression-per-line":"off",
         "@typescript-eslint/no-use-before-define": [

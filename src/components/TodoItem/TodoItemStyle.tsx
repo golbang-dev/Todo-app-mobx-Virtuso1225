@@ -20,7 +20,7 @@ export const ItemContainer = styled.div`
   padding-left: 20px;
   width: 350px;
   height: 60px;
-  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1.5px 3px rgba(53, 44, 44, 0.2);
   &:nth-child(4n + 1) {
     background: linear-gradient(
       90deg,

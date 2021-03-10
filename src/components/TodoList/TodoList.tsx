@@ -5,7 +5,7 @@ import TodoStore from '../../TodoStore/TodoStore';
 import { observer } from 'mobx-react';
 
 const TodoList = () => {
-  const todoList = TodoStore.Store.getTodoList;
+  const { TodoList: todoList } = TodoStore.Store;
 
   return (
     <>

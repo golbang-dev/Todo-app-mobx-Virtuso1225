@@ -1,0 +1,21 @@
+{
+   "compilerOptions": {
+      "lib": [
+         "es5",
+         "es6"
+      ],
+      "strict": true, 
+      "strictNullChecks": false,
+      "baseUrl": "./",
+      "esModuleInterop": true, 
+      "target": "es5",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "./build",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "skipLibCheck": true,  
+      "forceConsistentCasingInFileNames": true,
+      "sourceMap": true
+   }
+}

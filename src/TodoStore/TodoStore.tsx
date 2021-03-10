@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable } from 'mobx';
+import { action, makeObservable, observable } from 'mobx';
 import { nanoid } from 'nanoid';
 
 export interface ItemProps {
@@ -15,9 +15,7 @@ const InitialProps: ItemProps[] = [
 export class TodoStore {
   static store: TodoStore;
 
-  TodoList = InitialProps;
-
-  static getTodoList: unknown;
+  TodoList: ItemProps[];
 
   constructor() {
     makeObservable(this, {
@@ -25,18 +23,16 @@ export class TodoStore {
       addTodo: action,
       removeTodo: action,
       toggleTodo: action,
-      getTodoList: computed,
     });
+    this.TodoList = InitialProps;
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static get Store() {
+  static get Store(): TodoStore {
     if (!this.store) this.store = new TodoStore();
     return this.store;
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  addTodo(text: string) {
+  addTodo(text: string): void {
     const item: ItemProps = {
       id: nanoid(),
       text,
@@ -45,21 +41,14 @@ export class TodoStore {
     this.TodoList.push(item);
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  removeTodo(id: string) {
+  removeTodo(id: string): void {
     const index = this.TodoList.findIndex(item => item.id === id);
     this.TodoList.splice(index, 1);
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  toggleTodo(id: string) {
+  toggleTodo(id: string): void {
     const index = this.TodoList.findIndex(item => item.id === id);
     this.TodoList[index].completed = !this.TodoList[index].completed;
-  }
-
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  get getTodoList() {
-    return this.TodoList;
   }
 }
 
