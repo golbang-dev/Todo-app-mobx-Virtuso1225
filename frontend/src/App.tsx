@@ -47,12 +47,16 @@ function App() {
   );
 
   const onRemove = useCallback(
-    (index: number) => {
-      console.log(index);
-      axios.delete('http://localhost:3000/api/todo/remove', {
-        data: { id: index },
+    (id: number) => {
+      console.log(id);
+      axios({
+        url: `http://localhost:3000/api/todo/remove`,
+        method: 'delete',
+        data: {
+          index: id,
+        },
       });
-      setValue(value.filter(item => item.id !== index));
+      setValue(value.filter(item => item.id !== id));
     },
     [value],
   );
@@ -63,7 +67,7 @@ function App() {
         url: 'http://localhost:3000/api/todo/check',
         method: 'put',
         data: {
-          index: id.toString(),
+          index: id,
         },
       });
       setValue(

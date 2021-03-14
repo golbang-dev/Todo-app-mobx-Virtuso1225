@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/getlist', Todo.getTodoList);
 router.post('/write', Todo.writePost);
-router.post('/fix', Todo.fixPost);
+// router.post('/fix', Todo.fixPost);
 router.put('/check', Todo.toggleItem);
 router.delete('/remove', Todo.removeItem);
 
