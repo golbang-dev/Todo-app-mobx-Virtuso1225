@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import axios from 'axios';
 import TodoInsert from './components/TodoInsert/TodoInsert';
 import TodoList from './components/TodoList/TodoList';
 import GlobalStyle from './components/TodoTemplate/GlobalStyle';
@@ -11,14 +10,6 @@ import {
 } from './components/TodoTemplate/TodoTemplateStyle';
 
 const App: React.FC = () => {
-  useEffect(() => {
-    fetch('http://localhost:3000/getlist')
-      .then(res => res.json())
-      .then(todoItems => {
-        console.log(todoItems);
-      })
-      .catch(error => console.log(error));
-  }, []);
   return (
     <div>
       <GlobalStyle />
