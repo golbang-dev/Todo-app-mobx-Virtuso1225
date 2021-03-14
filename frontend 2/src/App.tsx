@@ -19,7 +19,7 @@ function App() {
   const [value, setValue] = useState<TodoProps[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/todo/getlist')
+    fetch('http://localhost:3000/api/getlist')
       .then(res => res.json())
       .then((toDoItems: TodoProps[]) => {
         setValue(toDoItems);
@@ -36,7 +36,7 @@ function App() {
       };
       axios({
         method: 'post',
-        url: 'http://localhost:3000/api/todo/write',
+        url: 'http://localhost:3000/api/write',
         data: {
           content: TodoContent,
         },
@@ -49,7 +49,7 @@ function App() {
   const onRemove = useCallback(
     (index: number) => {
       console.log(index);
-      axios.delete('http://localhost:3000/api/todo/remove', {
+      axios.delete('http://localhost:3000/api/remove', {
         data: { id: index },
       });
       setValue(value.filter(item => item.id !== index));
@@ -60,7 +60,7 @@ function App() {
   const onToggle = useCallback(
     (id: number) => {
       axios({
-        url: 'http://localhost:3000/api/todo/check',
+        url: 'http://localhost:3000/api/check',
         method: 'put',
         data: {
           index: id.toString(),

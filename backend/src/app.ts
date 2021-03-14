@@ -5,12 +5,10 @@ import morgan from 'morgan';
 import cors from 'cors';
 import * as Todo from './controller/Todo/itemControll';
 import router from './controller/Todo';
-// import bodyParser from 'body-parser';
 
 const app = express();
 
 app.use(cors());
-// app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('combined'));
@@ -26,6 +24,6 @@ const initData = async (): Promise<void> => {
 
 initData();
 
-app.use('/api', router);
+app.use('/api/todo', router);
 
 export default app;

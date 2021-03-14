@@ -1,8 +1,7 @@
 import { RequestHandler } from 'express';
-import { RequestOptions } from 'https';
-import { getManager } from 'typeorm';
+import { getManager, getRepository } from 'typeorm';
 import TodoItem from '../../entity/TodoItem';
-// import User from '../../entity/User';
+
 export const getTodoList: RequestHandler = async (req, res, next) => {
   try {
     const target = await getManager()
@@ -35,7 +34,6 @@ export const writePost: RequestHandler = async (req, res, next) => {
 export const fixPost: RequestHandler = async (req, res, next) => {
   try {
     const { content, id } = req.params;
-    // const user = await entityManager.findOne(User);
     const target = await TodoItem.findOne({ where: id });
     target.TodoContent = content;
     target.save();
@@ -48,12 +46,16 @@ export const fixPost: RequestHandler = async (req, res, next) => {
 
 export const toggleItem: RequestHandler = async (req, res, next) => {
   try {
+    const userRepository = getRepository(TodoItem);
     const { index } = req.body;
     console.log(index);
     const target = await TodoItem.findOne({ where: index });
     target.checked = !target.checked;
     target.save();
-    return res.status(200).end();
+    return res
+      .status(200)
+      .json({ index: index, checked: target.checked })
+      .end();
   } catch (error) {
     return next(error);
   }
