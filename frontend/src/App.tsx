@@ -1,13 +1,13 @@
-import axios from 'axios';
-import React, { useState, useCallback, useEffect } from 'react';
-import TodoAdd from './components/TodoAdd';
-import TodoList from './components/TodoList';
+import axios from "axios";
+import React, { useState, useCallback, useEffect } from "react";
+import TodoAdd from "./components/TodoAdd";
+import TodoList from "./components/TodoList";
 import {
   Title,
   TitleContainer,
   TodoContainer,
   TodoWrapper,
-} from './components/TodoTemplate/TemplateElement';
+} from "./components/TodoTemplate/TemplateElement";
 
 interface TodoProps {
   id?: number;
@@ -19,13 +19,13 @@ function App() {
   const [value, setValue] = useState<TodoProps[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/todo/getlist')
-      .then(res => res.json())
+    fetch("http://localhost:3000/api/todo/getlist")
+      .then((res) => res.json())
       .then((toDoItems: TodoProps[]) => {
         setValue(toDoItems);
         console.log(toDoItems);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
 
   const onInsert = useCallback(
@@ -35,48 +35,48 @@ function App() {
         checked: false,
       };
       axios({
-        method: 'post',
-        url: 'http://localhost:3000/api/todo/write',
+        method: "post",
+        url: "http://localhost:3000/api/todo/write",
         data: {
           content: TodoContent,
         },
       });
       setValue(value.concat(todo));
     },
-    [value],
+    [value]
   );
 
   const onRemove = useCallback(
     (id: number) => {
       console.log(id);
       axios({
-        url: `http://localhost:3000/api/todo/remove`,
-        method: 'delete',
+        url: `http://localhost:3000/api/todo/remove/`,
+        method: "delete",
         data: {
           index: id,
         },
       });
-      setValue(value.filter(item => item.id !== id));
+      setValue(value.filter((item) => item.id !== id));
     },
-    [value],
+    [value]
   );
 
   const onToggle = useCallback(
     (id: number) => {
       axios({
-        url: 'http://localhost:3000/api/todo/check',
-        method: 'put',
+        url: "http://localhost:3000/api/todo/check",
+        method: "put",
         data: {
           index: id,
         },
       });
       setValue(
-        value.map(todo =>
-          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
-        ),
+        value.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+        )
       );
     },
-    [value],
+    [value]
   );
 
   return (

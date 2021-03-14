@@ -1,0 +1,110 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Swagger Petstore"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3000"
+basePath: "/"
+tags:
+  - name: "Todo"
+    description: "Everything about your Pets"
+    externalDocs:
+      description: "Find out more"
+      url: "http://swagger.io"
+schemes:
+  - "http"
+
+paths:
+  /api/todo/getlist:
+    get:
+      tags:
+        - "Todo"
+      summary: "get TodoList"
+      description: "you can get a TodoList"
+      operationId: "getTodoList"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: get to-do item list successfully
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/TodoItem"
+        400:
+          description: get failed
+
+  /api/todo/write/{content}:
+    post:
+      tags:
+        - "Todo"
+      summary: add to-do item
+      operationId: addItem
+      description: |
+        Add to-do item in DB
+      produces:
+        - application/json
+      parameters:
+        - name: content
+          in: path
+          description: content of to-do item which will be added
+          required: true
+          type: string
+      responses:
+        200:
+          description: add to-do item list successfully
+        400:
+          description: add failed
+
+  /api/todo/check:
+    put:
+      tags:
+        - "Todo"
+      summary: "Update an existing pet"
+      description: ""
+      operationId: "checkTodo"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: check to-do item list successfully
+        400:
+          description: check failed
+
+  /api/todo/remove:
+    delete:
+      tags:
+        - "Todo"
+      summary: "Update an existing pet"
+      description: ""
+      operationId: "delete Todo"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: delete to-do item list successfully
+        400:
+          description: delete failed
+
+definitions:
+  TodoItem:
+    type: "object"
+    required:
+      - id
+      - TodoContent
+      - checked
+    properties:
+      id:
+        type: number
+        format: int64
+      TodoContent:
+        type: string
+      checked:
+        format: boolean
+    xml:
+      name: "TodoItem"
